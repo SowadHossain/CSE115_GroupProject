@@ -530,9 +530,10 @@ void EditUser(){
 
 void AddUsers(char username[50]){
     for(int i =0;i<MAX_USERS;i++){
-        if(userArray[i].id +1 != userArray[i+1].id)
+        if(userArray[i].id +1 == userArray[i+1].id)
+            NUMBER_OF_USERS = userArray[i+1].id;
+        else
             break;
-        NUMBER_OF_USERS = userArray[i+1].id;
     }
     setUser(NUMBER_OF_USERS,username,0,0,0);
 }
@@ -543,7 +544,7 @@ void setUser(int i,
     int isGameSaved,
     int rank){
         strcpy(userArray[i].name,name);
-        userArray[i].id = NUMBER_OF_USERS;
+        userArray[i].id = NUMBER_OF_USERS+1;
         userArray[i].matches_played = matches_played;
         userArray[i].isGameSaved = isGameSaved;
         userArray[i].rank = rank;
